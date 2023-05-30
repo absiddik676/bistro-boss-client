@@ -1,6 +1,7 @@
 import React from 'react';
 import MenuItem from '../../Shared/MenuItem/MenuItem';
 import Cover from '../../Shared/Cover/Cover';
+import { Link } from 'react-router-dom';
 
 const MenuCategroy = ({items,title,img,subTitle}) => {
     return (
@@ -13,7 +14,7 @@ const MenuCategroy = ({items,title,img,subTitle}) => {
                
             </div>
             <div className='text-center'>
-            <button className="btn btn-primary bg-[#e8e8e800] text-black border-0 border-b-2 border-black hover:bg-black hover:border-black hover:text-white" >ORDER YOUR FAVOURITE FOOD</button>
+            <Link to={`/oder/${title}`}><button className="btn btn-primary bg-[#e8e8e800] text-black border-0 border-b-2 border-black hover:bg-black hover:border-black hover:text-white" >ORDER YOUR FAVOURITE FOOD</button></Link>
             </div>
         </div>
     );

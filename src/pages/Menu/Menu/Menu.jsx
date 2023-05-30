@@ -16,21 +16,21 @@ const Menu = () => {
     const salad = menu.filter(item => item.category === 'salad')
     const soup = menu.filter(item => item.category === 'soup')
     const offered = menu.filter(item => item.category === 'offered')
+    const drinks = menu.filter(item => item.category === 'drinks')
     return (
         <div>
             <Helmet>
                 <title>Bistro Boss | Menu</title>
             </Helmet>
             {/* main cover */}
-           <Cover img={manuImg}  title={'OUR MENU'} subTitle={'Would you like to try a dish? '}></Cover>
+           <Cover  img={manuImg}  title={'OUR MENU'} subTitle={'Would you like to try a dish? '}></Cover>
 
             {/* offererd */}
-            <SectionTitle subHeading={'---Dont miss---'} heading={'TODAYS OFFER'}></SectionTitle>
-            <MenuCategroy items={offered}></MenuCategroy>
+            <MenuCategroy  img={dessertImg} subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'} title={'offered'} items={offered}></MenuCategroy>
 
             {/* desserts menu */}
             <MenuCategroy
-            title={'DESSERTS'}
+            title={'dessert'}
             subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             img={dessertImg}
             items={dessert}
@@ -38,7 +38,7 @@ const Menu = () => {
             </MenuCategroy>
             {/* pizz */}
             <MenuCategroy
-            title={'PIZZA'}
+            title={'pizza'}
             subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             img={pizzaImg}
             items={pizza}
@@ -46,7 +46,7 @@ const Menu = () => {
             </MenuCategroy>
             {/* SALADS */}
             <MenuCategroy
-            title={'SALADS'}
+            title={'salad'}
             subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             img={saladImg}
             items={salad}
@@ -54,10 +54,17 @@ const Menu = () => {
             </MenuCategroy>
             {/* SOUPS */}
             <MenuCategroy
-            title={'SOUPS'}
+            title={'soup'}
             subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
             img={soupImg}
-            items={salad}
+            items={soup}
+            >
+            </MenuCategroy>
+            <MenuCategroy
+            title={'drink'}
+            subTitle={'Lorem Ipsum has been the industry’s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.'}
+            img={soupImg}
+            items={drinks}
             >
             </MenuCategroy>
         </div>
