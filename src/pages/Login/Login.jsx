@@ -3,14 +3,19 @@ import { loadCaptchaEnginge, LoadCanvasTemplate, LoadCanvasTemplateNoReload, val
 import bgImg from '../../assets/image/others/authentication.png'
 import sideImg from '../../assets/image/others/authentication2.png'
 import { AuthContext } from '../../Provider/AuthProvider';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
+import Spinner from '../Shared/Spinner/Spinner';
 
 const Login = () => {
     const [disable, setDisable] = useState(true);
 
     const { signIn } = useContext(AuthContext)
+    const navigate = useNavigate();
+    const location = useLocation();
+    const formLocation = location.state?.form?.pathname || '/';
+
 
     useEffect(() => {
         loadCaptchaEnginge(6);
@@ -34,6 +39,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
+                navigate(formLocation,{replace:true});
             })
             .catch(error => {
                 console.log(error);
@@ -88,7 +94,7 @@ const Login = () => {
                                         </label>
                                     </div>
                                     <div className="form-control mt-6">
-                                        <input disabled={disable} type="submit" className="btn btn-primary" value="Login" />
+                                        <input disabled={false} type="submit" className="btn btn-primary" value="Login" />
                                     </div>
                                 </form>
                                 <p><small>New here?</small> <Link to='/signUp'>Create a New Account</Link></p>

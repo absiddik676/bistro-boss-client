@@ -1,24 +1,33 @@
 import React, { useContext } from 'react';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../Provider/AuthProvider';
+import { FaShoppingCart } from "react-icons/fa";
+import useCart from '../../../hooks/useCart';
 
 const Navbar = () => {
-    const {user, logOut} = useContext(AuthContext)
-
-    const handelLogOut = () =>{
+    const { user, logOut } = useContext(AuthContext)
+    const [cart] = useCart()
+    const handelLogOut = () => {
         logOut()
-        .then(result =>{})
-        .catch(error =>{
-            console.log(error);
-        })
+            .then(result => { })
+            .catch(error => {
+                console.log(error);
+            })
     }
 
     const navOptions = <>
         <li><Link to='/'>Home</Link></li>
+        <li><Link to='/test'>Test</Link></li>
         <li><Link to='/menu'>Our Menu</Link></li>
         <li><Link to='/oder/salad'>Oder</Link></li>
+        <li><Link to='/'>
+            <button className="btn">
+                <FaShoppingCart size={24} className='mr-3'/>
+                <div className="badge badge-secondary">+{cart? cart.length : '0'}</div>
+            </button>
+        </Link></li>
         {
-            user ? <button onClick={handelLogOut} className="btn btn-ghost">Log Out</button> : <li><Link to='/login'>Login</Link></li> 
+            user ? <button onClick={handelLogOut} className="btn btn-ghost">Log Out</button> : <li><Link to='/login'>Login</Link></li>
         }
     </>
     return (
@@ -36,8 +45,8 @@ const Navbar = () => {
                     <a className="btn btn-ghost normal-case text-xl">BISTRO BOSS </a>
                 </div>
                 <div className="navbar-center hidden lg:flex">
-                    <ul className="menu menu-horizontal px-1">
-                       {navOptions}
+                    <ul className="menu flex items-center  menu-horizontal px-1">
+                        {navOptions}
                     </ul>
                 </div>
                 <div className="navbar-end">

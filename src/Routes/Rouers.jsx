@@ -5,6 +5,8 @@ import Menu from "../pages/Menu/Menu/Menu";
 import Oder from "../pages/Oder/Oder/Oder";
 import Login from "../pages/Login/Login";
 import SignUp from "../pages/SignUp/SignUp";
+import Test from "../Test";
+import PrivateRoute from "./PrivateRoute";
 const router = createBrowserRouter([
     {
         path: "/",
@@ -29,6 +31,10 @@ const router = createBrowserRouter([
             {
                 path:'signUp',
                 element:<SignUp/>
+            },
+            {
+                path:'test',
+                element:<PrivateRoute><Test/></PrivateRoute>
             },
         ]
     },
