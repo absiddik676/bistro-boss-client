@@ -51,6 +51,7 @@ const Testimonials = () => {
                     </SwiperSlide>)
                 }
             </Swiper>
+            
         </div>
     );
 };
