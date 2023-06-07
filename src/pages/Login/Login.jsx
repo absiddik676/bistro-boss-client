@@ -7,6 +7,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import Swal from 'sweetalert2';
 import Spinner from '../Shared/Spinner/Spinner';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 
 const Login = () => {
     const [disable, setDisable] = useState(true);
@@ -39,7 +40,7 @@ const Login = () => {
                         popup: 'animate__animated animate__fadeOutUp'
                     }
                 })
-                navigate(formLocation,{replace:true});
+                navigate(formLocation, { replace: true });
             })
             .catch(error => {
                 console.log(error);
@@ -97,8 +98,14 @@ const Login = () => {
                                         <input disabled={disable} type="submit" className="btn btn-primary" value="Login" />
                                     </div>
                                 </form>
-                                <p><small>New here?</small> <Link to='/signUp'>Create a New Account</Link></p>
+                                <div className='text-center'>
+                                    <p><small>New here?</small> <Link to='/signUp'>Create a New Account</Link></p>
+
+                                    <SocialLogin />
+                                </div>
+
                             </div>
+
                         </div>
 
                     </div>

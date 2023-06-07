@@ -6,28 +6,39 @@ import bgImg from '../../assets/image/others/authentication.png'
 import sideImg from '../../assets/image/others/authentication2.png'
 import { AuthContext } from '../../Provider/AuthProvider';
 import Swal from 'sweetalert2';
+import SocialLogin from '../Shared/SocialLogin/SocialLogin';
 const SignUp = () => {
     const { register, handleSubmit, watch, reset, formState: { errors } } = useForm();
     const { createUser, updateUserProfile } = useContext(AuthContext)
     const navigate = useNavigate()
     const onSubmit = data => {
-        console.log(data);
         createUser(data.email, data.password)
             .then(result => {
                 const user = result.user;
-                console.log(user);
                 updateUserProfile(data.name, data.photoURL)
                     .then(result => {
-                        console.log(result);
-                        Swal.fire({
-                            position: 'top-end',
-                            icon: 'success',
-                            title: 'User create sucessfully ',
-                            showConfirmButton: false,
-                            timer: 1500
+                        const saveUser = { name: data.name, email: data.email }
+                        fetch('http://localhost:5000/users', {
+                            method: 'POST',
+                            headers: {
+                                'content-type': 'application/json'
+                            },
+                            body: JSON.stringify(saveUser)
                         })
-                        reset()
-                        navigate('/')
+                            .then(res => res.json())
+                            .then(data => {
+                                if (data.insertedId) {
+                                    Swal.fire({
+                                        position: 'top-end',
+                                        icon: 'success',
+                                        title: 'User create sucessfully ',
+                                        showConfirmButton: false,
+                                        timer: 1500
+                                    })
+                                    reset()
+                                    navigate('/')
+                                }
+                            })
                     })
                     .catch(error => {
                         console.log(error);
@@ -94,7 +105,10 @@ const SignUp = () => {
                                         <input className='btn btn-primary' type="submit" value="Sign Up" />
                                     </div>
                                 </form>
-                                <p><small>Already registered?</small> <Link to='/login'>Go to log in</Link></p>
+                                <div className='text-center'>
+                                    <p><small>Already registered?</small> <Link to='/login'>Go to log in</Link></p>
+                                    <SocialLogin />
+                                </div>
                             </div>
 
                         </div>

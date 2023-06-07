@@ -11,14 +11,17 @@ import { Navigation, Pagination, Mousewheel, Keyboard } from "swiper";
 import { Rating } from '@smastrom/react-rating'
 
 import '@smastrom/react-rating/style.css'
+import { useQuery } from '@tanstack/react-query';
 
 const Testimonials = () => {
-    const [reviews, setReviews] = useState([])
-    useEffect(() => {
-        fetch('http://localhost:5000/reviews')
-            .then(res => res.json())
-            .then(data => setReviews(data))
-    }, [])
+    const {data:reviews=[],isLoading} = useQuery({
+        queryKey:['review'],
+        queryFn:async ()=>{
+            const res = await fetch('http://localhost:5000/reviews')
+            return res.json()
+        }
+    })
+    console.log(reviews);
     return (
         <div className='my-20'>
             <SectionTitle
