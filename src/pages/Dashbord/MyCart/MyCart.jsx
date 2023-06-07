@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { BiTrash } from 'react-icons/bi';
 import useCart from '../../../hooks/useCart';
 import Swal from 'sweetalert2';
+import { Link } from 'react-router-dom';
 
 
 const MyCart = () => {
@@ -53,7 +54,7 @@ const MyCart = () => {
             <div className='flex justify-between h-10  uppercase items-center'>
                 <h1 className='text-3xl '>Total Items: {cart.length}</h1>
                 <h1 className='text-3xl '>Total Price: $ {totalPrice.toFixed(2)}</h1>
-                <button className="btn btn-warning">Pay</button>
+                <Link to='/dashboard/pay'><button className="btn btn-warning">Pay</button></Link>
             </div>
             <div className="overflow-x-auto">
                 <table className="table">
