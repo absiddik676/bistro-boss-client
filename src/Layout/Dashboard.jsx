@@ -25,7 +25,7 @@ const Dashboard = () => {
                 <ul className="menu p-4 w-80 h-full ">
                     {
                         isAdmin ? <>
-                            <li><NavLink to='/dashboard/home'><AiOutlineHome size={24} />Admin Home</NavLink ></li>
+                            <li><NavLink to='/dashboard/adminhome'><AiOutlineHome size={24} />Admin Home</NavLink ></li>
                             <li><NavLink to='/dashboard/addItem'><LuUtensils size={24} />Add Item</NavLink ></li>
                             <li><NavLink to='/dashboard/manageItems'><MdOutlineManageSearch size={24} />manage items</NavLink ></li>
                             <li><NavLink to='/dashboard/booking'><BiBookAdd size={24} />Manage bookings</NavLink ></li>
